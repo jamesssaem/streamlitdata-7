@@ -26,7 +26,7 @@ import streamlit as st
 import handTracking as ht                   # 준비해 둔 모듈을 읽어온다.
 from PIL import Image
 from streamlit_lottie import st_lottie
-from streamlit_webrtc import  webrtc_streamer
+from streamlit_webrtc import WebRtcMode, webrtc_streamer
 
 # 초기화 설정.
 img = np.asarray(Image.open('./images/None.png'))
@@ -124,11 +124,12 @@ with col3:
     #             media_stream_constraints={'video':True, 'audio':False})
     # 원격.
     webstr = webrtc_streamer(key="example",
+                mode=WebRtcMode.SENDRECV,
                 video_frame_callback=video_frame_processor,
                 media_stream_constraints={'video':True, 'audio':False},
                 rtc_configuration={ 
-                    "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
-                } )    
+                    "iceServers": [{"urls": ["stun:stun1.l.google.com:19302"]}] },
+                async_processing=True )    
 with col4:
     st.header(':red[컴퓨터]')
     fig_place = st.empty()
