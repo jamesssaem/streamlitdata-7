@@ -128,7 +128,7 @@ with col3:
                 video_frame_callback=video_frame_processor,
                 media_stream_constraints={'video':True, 'audio':False},
                 rtc_configuration={ 
-                    "iceServers": [{"urls": ["stun:stun3.l.google.com:19302"]}] },
+                    "iceServers": [{"urls": ["stun:stun4.l.google.com:19302"]}] },
                 async_processing=True )    
 with col4:
     st.header(':red[컴퓨터]')
