@@ -118,9 +118,17 @@ with col2:
 col3,_, col4 = st.columns([2,1,2])
 with col3:
     st.header(':blue[나]')
+    # 로컬.
+    # webstr = webrtc_streamer(key="example",
+    #             video_frame_callback=video_frame_processor,
+    #             media_stream_constraints={'video':True, 'audio':False})
+    # 원격.
     webstr = webrtc_streamer(key="example",
                 video_frame_callback=video_frame_processor,
-                media_stream_constraints={'video':True, 'audio':False})
+                media_stream_constraints={'video':True, 'audio':False},
+                rtc_configuration={ 
+                    "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]
+                } )    
 with col4:
     st.header(':red[컴퓨터]')
     fig_place = st.empty()
