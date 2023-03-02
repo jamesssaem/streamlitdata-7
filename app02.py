@@ -115,8 +115,9 @@ with col2:
 '---'
 ''
 
-col3,_, col4 = st.columns([2,1,2])
-with col3:
+_, col, _ = st.columns(3)
+
+with col:
     st.header(':blue[나]')
     # 로컬.
     # webstr = webrtc_streamer(key="example",
@@ -130,7 +131,9 @@ with col3:
                 rtc_configuration={ 
                     "iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}] },
                 async_processing=True )    
-with col4:
+    ''
+    '---'
+    ''
     st.header(':red[컴퓨터]')
     fig_place = st.empty()
     fig, ax = plt.subplots(1, 1)
